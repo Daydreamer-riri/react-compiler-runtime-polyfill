@@ -1,0 +1,75 @@
+{
+  "name": "react-compiler-runtime-polyfill",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.15.5",
+  "description": "A simple polyfill for react-compiler-runtime, designed to provide developers who cannot upgrade to React 19 at the moment with the ability to use react-compiler.",
+  "author": "Riri <Daydreamerriri@outlook.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Daydreamer-riri/react-compiler-runtime-polyfill#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daydreamer-riri/react-compiler-runtime-polyfill.git"
+  },
+  "bugs": "https://github.com/Daydreamer-riri/react-compiler-runtime-polyfill/issues",
+  "keywords": ["react", "react-compiler-runtime", "polyfill", "react-compiler"],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "release": "bumpp && npm publish",
+    "start": "esno src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@ririd/eslint-config": "^1.2.0",
+    "@types/node": "^18.18.14",
+    "@types/react": "^18.0.0",
+    "bumpp": "^9.4.0",
+    "eslint": "^9.0.0",
+    "esno": "^4.7.0",
+    "lint-staged": "15.2.2",
+    "react": "^18.0.0",
+    "rimraf": "5.0.5",
+    "simple-git-hooks": "^2.11.1",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
